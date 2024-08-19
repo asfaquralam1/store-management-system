@@ -18,25 +18,26 @@ require('connection.php');
 
         $category_id   = $data['category_id'];
         $category_name = $data['category_name'];
-        $category_entrydate = $data['category_entrydate'];
+        $category_entry_date = $data['category_entry_date'];
     }
 
-    if(isset($_GET['category_name'])){
+    if (isset($_GET['category_name'])) {
         $category_name = $_GET['category_name'];
-        $category_entrydate = $_GET['category_entrydate'];
+        $category_entry_date = $_GET['category_entry_date'];
         $category_id = $_GET['category_id'];
-        $sql1 = "UPDATE category SET category_name='$category_name', category_entrydate = '$category_entrydate' WHERE category_id = '$category_id'"; 
-        if($conn->query($sql1) == TRUE){
-            echo 'Update Successful';
+        $sql1 = "UPDATE category SET category_name='$category_name', category_entry_date = '$category_entry_date' WHERE category_id = '$category_id'";
+        if ($conn->query($sql1) == TRUE) {
+            echo 'Updated Successful!';
+        } else {
+            echo 'Not Updated';
         }
-
     }
     ?>
-    <form action="edit_category.php" method="get">
+    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="get">
         Category :<br>
         <input type="text" name="category_name" value=" <?php echo $category_name ?>"><br><br>
         Category Entry Date :<br>
-        <input type="date" name="category_entrydate" value=" <?php echo $category_entrydate ?>"><br><br>
+        <input type="date" name="category_entry_date" value="<?php echo $category_entry_date ?>"><br><br>
         <input type="text" name="category_id" value=" <?php echo $category_id ?>" hidden>
         <input type="submit" value="update">
     </form>

@@ -9,7 +9,7 @@ require('connection.php');
 
 <body>
     <?php
-    if (isset($_GET['category_name']) && isset($_GET['category_entrydate'])) {
+    if (isset($_GET['category_name'])) {
         $category_name      = $_GET['category_name'];
         $category_entrydate = $_GET['category_entrydate'];
 
@@ -22,7 +22,7 @@ require('connection.php');
         }
     }
     ?>
-    <form action="add_category.php" method="get">
+    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="get">
         Category :<br>
         <input type="text" name="category_name"><br><br>
         Category Entry Date :<br>

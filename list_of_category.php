@@ -15,11 +15,11 @@ require('connection.php');
     while ($data = mysqli_fetch_assoc($query)) {
         $category_id   = $data['category_id'];
         $category_name = $data['category_name'];
-        $category_entrydate = $data['category_entrydate'];
+        $category_entry_date = $data['category_entry_date'];
 
         echo "<tr>
               <td>$category_name</td>
-              <td>$category_entrydate</td>
+              <td>$category_entry_date</td>
               <td><a href='edit_category.php?id=$category_id'>Edit</a></td>
         </tr>";
     }
