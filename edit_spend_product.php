@@ -16,30 +16,30 @@ function data_list($tablename, $column1, $column2)
 <!DOCTYPE html>
 
 <head>
-    <title>Store Product</title>
+    <title>Edit spend Product</title>
 </head>
 
 <body>
     <?php
     if (isset($_GET['id'])) {
         $getid = $_GET['id'];
-        $sql1 = "SELECT * FROM store_product WHERE store_product_id =$getid";
+        $sql1 = "SELECT * FROM spend_product WHERE spend_product_id =$getid";
         $query1 = $conn->query($sql1);
 
         $data = mysqli_fetch_assoc($query1);
 
-        $store_product_id   = $data['store_product_id'];
-        $store_product_name      = $data['store_product_name'];
-        $store_product_quentity  = $data['store_product_quentity'];
-        $store_product_entry_date = $data['store_product_entry_date'];
+        $spend_product_id   = $data['spend_product_id'];
+        $spend_product_name      = $data['spend_product_name'];
+        $spend_product_quentity  = $data['spend_product_quentity'];
+        $spend_product_entry_date = $data['spend_product_entry_date'];
     }
-    if (isset($_GET['store_product_name'])) {
-        $store_product_name      = $_GET['store_product_name'];
-        $store_product_quentity  = $_GET['store_product_quentity'];
-        $store_product_entry_date = $_GET['store_product_entry_date'];
-        $store_product_id = $_GET['store_product_id'];
+    if (isset($_GET['spend_product_name'])) {
+        $spend_product_name      = $_GET['spend_product_name'];
+        $spend_product_quentity  = $_GET['spend_product_quentity'];
+        $spend_product_entry_date = $_GET['spend_product_entry_date'];
+        $spend_product_id = $_GET['spend_product_id'];
 
-        $sql2 = "UPDATE store_product SET store_product_name = '$store_product_name', store_product_quentity = '$store_product_quentity', store_product_entry_date= '$store_product_entry_date' WHERE store_product_id = $store_product_id";
+        $sql2 = "UPDATE spend_product SET spend_product_name = '$spend_product_name', spend_product_quentity = '$spend_product_quentity', spend_product_entry_date= '$spend_product_entry_date' WHERE spend_product_id = $spend_product_id";
 
         if ($conn->query($sql2) == TRUE) {
             echo 'Updated Successful!';
@@ -54,22 +54,22 @@ function data_list($tablename, $column1, $column2)
     ?>
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="get">
         Product :<br>
-        <select name="store_product_name">
+        <select name="spend_product_name">
             <?php
             while ($data = mysqli_fetch_array($query)) {
                 $data_id = $data['product_id'];
                 $data_name = $data['product_name'];
             ?>
-                <option value='<?php echo $data_id ?>' <?php if ($store_product_name == $data_id) {
+                <option value='<?php echo $data_id ?>' <?php if ($spend_product_name == $data_id) {
                                                             echo 'selected';
                                                         } ?>><?php echo $data_name ?></option>;
             <?php } ?>
         </select><br><br>
         Product Quentity :<br>
-        <input type="text" name="store_product_quentity" value="<?php echo $store_product_quentity ?>"><br><br>
-        Store Entry Date :<br>
-        <input type="date" name="store_product_entry_date" value="<?php echo $store_product_entry_date ?>">
-        <input type="text" name="store_product_id" value="<?php echo $store_product_id ?>" hidden><br><br>
+        <input type="text" name="spend_product_quentity" value="<?php echo $spend_product_quentity ?>"><br><br>
+        spend Entry Date :<br>
+        <input type="date" name="spend_product_entry_date" value="<?php echo $spend_product_entry_date ?>">
+        <input type="text" name="spend_product_id" value="<?php echo $spend_product_id ?>" hidden><br><br>
         <input type="submit" value="update">
     </form>
 </body>

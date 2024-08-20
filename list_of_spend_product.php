@@ -13,12 +13,12 @@ while ($data1 =  mysqli_fetch_assoc($query1)) {
 <!DOCTYPE html>
 
 <head>
-    <title>List of Store Product</title>
+    <title>List of Spend Product</title>
 </head>
 
 <body>
     <?php
-    $sql = "SELECT * FROM store_product";
+    $sql = "SELECT * FROM spend_product";
     $query = $conn->query($sql);
     echo "<table border='1'>
     <tr>
@@ -28,16 +28,16 @@ while ($data1 =  mysqli_fetch_assoc($query1)) {
     <th>Action</th>
     </tr>";
     while ($data = mysqli_fetch_assoc($query)) {
-        $store_product_id         = $data['store_product_id'];
-        $store_product_name      = $data['store_product_name'];
-        $store_product_quentity  = $data['store_product_quentity'];
-        $store_product_entry_date = $data['store_product_entry_date'];
+        $spend_product_id         = $data['spend_product_id'];
+        $spend_product_name      = $data['spend_product_name'];
+        $spend_product_quentity  = $data['spend_product_quentity'];
+        $spend_product_entry_date = $data['spend_product_entry_date'];
 
         echo "<tr>
-              <td>$data_list[$store_product_name]</td>
-              <td>$store_product_quentity</td>
-              <td>$store_product_entry_date</td>
-              <td><a href='edit_store_product.php?id=$store_product_id'>Edit</a></td>
+              <td>$data_list[$spend_product_name]</td>
+              <td>$spend_product_quentity</td>
+              <td>$spend_product_entry_date</td>
+              <td><a href='edit_spend_product.php?id=$spend_product_id'>Edit</a></td>
         </tr>";
     }
     echo "</table>"
